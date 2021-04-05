@@ -7,9 +7,9 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_DATABASE: wp_db
-      MYSQL_USER: wp_user
-      MYSQL_PASSWORD: wp_pass
+      MYSQL_DATABASE: $WP_DB_NAME
+      MYSQL_USER: $WP_DB_USER
+      MYSQL_PASSWORD: $WP_DB_PASS
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
 
   wp:
@@ -27,9 +27,9 @@ services:
       - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
     environment:
       WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: wp_user
-      WORDPRESS_DB_PASSWORD: wp_pass
-      WORDPRESS_DB_NAME: wp_db
+      WORDPRESS_DB_USER: $WP_DB_USER
+      WORDPRESS_DB_PASSWORD: $WP_DB_PASS
+      WORDPRESS_DB_NAME: $WP_DB_NAME
 volumes:
   wp_data:
   db_data:
