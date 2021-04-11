@@ -7,4 +7,8 @@ ARG BUILD_ENV=production
 #RUN pecl install xdebug-$XDEBUG_VERSION \
 #	&& docker-php-ext-enable xdebug
 
+RUN URL=https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+  && curl -o /usr/bin/wp -fsSL $URL \
+  && chmod +x /usr/bin/wp
+
 RUN	php -v

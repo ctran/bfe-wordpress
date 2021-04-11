@@ -2,12 +2,14 @@
 
 set -o errexit
 
+BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 OPENSSL_SUBJ="/C=US/ST=California/L=San Diego"
 OPENSSL_CA="${OPENSSL_SUBJ}/CN=CA"
 OPENSSL_SERVER="${OPENSSL_SUBJ}/CN=loclahost"
 OPENSSL_CLIENT="${OPENSSL_SUBJ}/CN=$HOSTNAME"
 
-DEST_DIR=certs
+DEST_DIR="$BIN_DIR/../certs"
 
 pushd $DEST_DIR
 
